@@ -38,6 +38,7 @@
 <script src="js/nouislider.min.js"></script>
 <script src="js/wNumb.js"></script>
         <script src="data/NOVEMBER2023_1.js"></script>
+        <script src="data/DECEMBER2023_2.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -46,7 +47,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[56.770731793650356,-6.6639028939200635],[58.45915573465413,-0.8791917000526386]]);
+        }).fitBounds([[56.42881771955353,-7.476324971078411],[58.13273989756153,-1.6916137772109883]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -204,134 +205,6 @@
                 interactive: true,
             }
                     break;
-                case 'KW':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(255,255,255,1.0)',
-                dashArray: '10,5',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(0,0,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'FW':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(231,113,72,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'PW':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(183,72,255,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'WBD':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(117,58,128,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(0,255,0,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'NBW':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(91,38,48,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'UIDW':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(247,247,247,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(83,83,83,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'UIDD':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(83,83,83,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(203,203,203,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'BS':
-                    return {
-                pane: 'pane_NOVEMBER2023_1',
-                radius: 8.0,
-                opacity: 1,
-                color: 'rgba(255,255,255,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(0,128,0,1.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
         map.createPane('pane_NOVEMBER2023_1');
@@ -354,8 +227,139 @@
         });
         bounds_group.addLayer(layer_NOVEMBER2023_1);
         map.addLayer(layer_NOVEMBER2023_1);
+        function pop_DECEMBER2023_2(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DATE'] !== null ? autolinker.link(feature.properties['DATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>SPECIES</strong><br />' + (feature.properties['SPECIES'] !== null ? autolinker.link(feature.properties['SPECIES'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_DECEMBER2023_2_0(feature) {
+            switch(String(feature.properties['SPECIES'])) {
+                case 'BND':
+                    return {
+                pane: 'pane_DECEMBER2023_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(9,9,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'CD':
+                    return {
+                pane: 'pane_DECEMBER2023_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,224,44,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'HP':
+                    return {
+                pane: 'pane_DECEMBER2023_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(22,222,255,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'HW':
+                    return {
+                pane: 'pane_DECEMBER2023_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,94,177,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'KW':
+                    return {
+                pane: 'pane_DECEMBER2023_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(255,255,255,1.0)',
+                dashArray: '10,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_DECEMBER2023_2');
+        map.getPane('pane_DECEMBER2023_2').style.zIndex = 402;
+        map.getPane('pane_DECEMBER2023_2').style['mix-blend-mode'] = 'normal';
+        var layer_DECEMBER2023_2 = new L.geoJson(json_DECEMBER2023_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_DECEMBER2023_2',
+            layerName: 'layer_DECEMBER2023_2',
+            pane: 'pane_DECEMBER2023_2',
+            onEachFeature: pop_DECEMBER2023_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_DECEMBER2023_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_DECEMBER2023_2);
+        map.addLayer(layer_DECEMBER2023_2);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'NOVEMBER 2023<br /><table><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_BOTTLENOSEDOLPHIN0.png" /></td><td>BOTTLENOSE DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_COMMONDOLPHIN1.png" /></td><td>COMMON DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_HARBOURPORPOISE2.png" /></td><td>HARBOUR PORPOISE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_HUMPBACKWHALE3.png" /></td><td>HUMPBACK WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_MINKEWHALE4.png" /></td><td>MINKE WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_RISSOSDOLPHIN5.png" /></td><td>RISSO\'S DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_KILLERWHALE6.png" /></td><td>KILLER WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_FINWHALE7.png" /></td><td>FIN WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_LONGFINNEDPILOTWHALE8.png" /></td><td>LONG-FINNED PILOT WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_WHITEBEAKEDDOLPHIN9.png" /></td><td>WHITE-BEAKED DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_NORTHERNBOTTLENOSEWHALE10.png" /></td><td>NORTHERN BOTTLENOSE WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_UNIDENTIFIEDWHALESPP11.png" /></td><td>UNIDENTIFIED WHALE SPP.</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_UNIDENTIFIEDDOLPHINSPP12.png" /></td><td>UNIDENTIFIED DOLPHIN SPP.</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_BASKINGSHARK13.png" /></td><td>BASKING SHARK</td></tr></table>': layer_NOVEMBER2023_1,"OpenStreetMap": layer_OpenStreetMap_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'DECEMBER 2023<br /><table><tr><td style="text-align: center;"><img src="legend/DECEMBER2023_2_BOTTLENOSEDOLPHIN0.png" /></td><td>BOTTLENOSE DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/DECEMBER2023_2_COMMONDOLPHIN1.png" /></td><td>COMMON DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/DECEMBER2023_2_HARBOURPORPOISE2.png" /></td><td>HARBOUR PORPOISE</td></tr><tr><td style="text-align: center;"><img src="legend/DECEMBER2023_2_HUMPBACKWHALE3.png" /></td><td>HUMPBACK WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/DECEMBER2023_2_KILLERWHALE4.png" /></td><td>KILLER WHALE</td></tr></table>': layer_DECEMBER2023_2,'NOVEMBER 2023<br /><table><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_BOTTLENOSEDOLPHIN0.png" /></td><td>BOTTLENOSE DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_COMMONDOLPHIN1.png" /></td><td>COMMON DOLPHIN</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_HARBOURPORPOISE2.png" /></td><td>HARBOUR PORPOISE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_HUMPBACKWHALE3.png" /></td><td>HUMPBACK WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_MINKEWHALE4.png" /></td><td>MINKE WHALE</td></tr><tr><td style="text-align: center;"><img src="legend/NOVEMBER2023_1_RISSOSDOLPHIN5.png" /></td><td>RISSO\'S DOLPHIN</td></tr></table>': layer_NOVEMBER2023_1,"OpenStreetMap": layer_OpenStreetMap_0,},{collapsed:false}).addTo(map);
         setBounds();
         var mapDiv = document.getElementById('map');
         var row = document.createElement('div');
@@ -474,7 +478,7 @@
             document.getElementById("menu").appendChild(div_SPECIES);
             sel_SPECIES = document.createElement('select');
             sel_SPECIES.multiple = true;
-            sel_SPECIES.size = 6;
+            sel_SPECIES.size = 7;
             sel_SPECIES.id = "sel_SPECIES";
             var SPECIES_options_str = "<option value='' unselected></option>";
             sel_SPECIES.onchange = function(){filterFunc()};
@@ -482,6 +486,7 @@
             SPECIES_options_str  += '<option value="CD">CD</option>';
             SPECIES_options_str  += '<option value="HP">HP</option>';
             SPECIES_options_str  += '<option value="HW">HW</option>';
+            SPECIES_options_str  += '<option value="KW">KW</option>';
             SPECIES_options_str  += '<option value="MW">MW</option>';
             SPECIES_options_str  += '<option value="RD">RD</option>';
             sel_SPECIES.innerHTML = SPECIES_options_str;
